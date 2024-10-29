@@ -59,8 +59,8 @@ export default async function Page() {
                   tus tareas y aumenta tu productividad.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-                  <Button size="lg" className="w-full sm:w-auto">
-                    Regístrate Gratis
+                  <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Link href={"/register"}>Regístrate Gratis</Link>
                   </Button>
                 </div>
               </div>
@@ -115,8 +115,8 @@ export default async function Page() {
                   Únete a miles de usuarios que ya han simplificado su vida con
                   TaskMaster.
                 </p>
-                <Button size="lg" variant="secondary">
-                  Comienza Ahora - ¡Es Gratis!
+                <Button size="lg" variant="secondary" asChild>
+                  <Link href={"/login"}>Comienza Ahora - ¡Es Gratis!</Link>
                 </Button>
               </div>
             </section>
