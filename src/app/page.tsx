@@ -1,101 +1,135 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@radix-ui/react-select";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import { UserCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import { CheckCircle, ListTodo, Clock } from "lucide-react";
+import { getUser } from "@/actions/auth/getUser";
+import Home from "@/components/home/Home";
+import ButtonLogout from "@/components/auth/ButtonLogout";
 
-export default function Home() {
+export default async function Page() {
+  const user = await getUser();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="flex flex-col min-h-[100dvh]">
+      <header className="flex justify-between items-center p-4 bg-primary text-primary-foreground">
+        <h1 className="text-2xl font-bold">FeliTask</h1>
+        {user?.message === "No se encontró token de autenticación" ? (
+          <Button asChild>
+            <Link href="/login">Iniciar Sesión</Link>
+          </Button>
+        ) : (
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-2">
+                <UserCircle className="h-5 w-5" />
+                <span>{user?.data?.name}</span>
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-48">
+              <div className="flex flex-col space-y-1">
+                <div className="px-2 py-1.5 text-sm text-muted-foreground">
+                  {user?.data?.email}
+                </div>
+                <Separator />
+                <ButtonLogout />
+              </div>
+            </PopoverContent>
+          </Popover>
+        )}
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {user?.message === "No se encontró token de autenticación" ? (
+        <>
+          <main className="flex-grow">
+            <section className="py-12 md:py-24 lg:py-32 bg-background">
+              <div className="container mx-auto px-4 text-center">
+                <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl mb-4">
+                  Organiza tu vida con FeliTask
+                </h2>
+                <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  La aplicación TODO-LIST más intuitiva y eficiente. Simplifica
+                  tus tareas y aumenta tu productividad.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+                  <Button size="lg" className="w-full sm:w-auto">
+                    Regístrate Gratis
+                  </Button>
+                </div>
+              </div>
+            </section>
+
+            <section className="py-12 md:py-24 bg-muted">
+              <div className="container mx-auto xl:px-60">
+                <h3 className="text-2xl font-bold text-center mb-12">
+                  Características Principales
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[
+                    {
+                      icon: ListTodo,
+                      title: "Listas Ilimitadas",
+                      description: "Crea todas las listas que necesites",
+                    },
+                    {
+                      icon: CheckCircle,
+                      title: "Tareas Simples",
+                      description: "Añade y completa tareas fácilmente",
+                    },
+                    {
+                      icon: Clock,
+                      title: "Recordatorios",
+                      description: "Nunca olvides una tarea importante",
+                    },
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-col items-center text-center"
+                    >
+                      <feature.icon className="h-12 w-12 mb-4 text-primary" />
+                      <h4 className="text-xl font-semibold mb-2">
+                        {feature.title}
+                      </h4>
+                      <p className="text-muted-foreground">
+                        {feature.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="py-12 md:py-24 bg-primary text-primary-foreground">
+              <div className="container mx-auto px-4 text-center">
+                <h3 className="text-2xl font-bold mb-4">
+                  ¿Listo para aumentar tu productividad?
+                </h3>
+                <p className="mb-8 max-w-2xl mx-auto">
+                  Únete a miles de usuarios que ya han simplificado su vida con
+                  TaskMaster.
+                </p>
+                <Button size="lg" variant="secondary">
+                  Comienza Ahora - ¡Es Gratis!
+                </Button>
+              </div>
+            </section>
+          </main>
+
+          <footer className="p-4 text-center text-sm text-muted-foreground bg-background">
+            © {new Date().getFullYear()} FeliTaks. Todos los derechos
+            reservados.
+          </footer>
+        </>
+      ) : (
+        <Home />
+      )}
     </div>
   );
 }
