@@ -30,15 +30,15 @@ Debido a que el proyecto utiliza **Server Actions** en Next.js 14, es importante
 ## Imágenes de Referencia
 
 ### Vista principal de la aplicación
-![Vista Principal](![image](https://github.com/user-attachments/assets/a2a725a6-38a6-42b4-93a7-54c2c6b4dbdd))
+![Vista Principal]!![3](https://github.com/user-attachments/assets/4565e269-8222-47d4-8e44-646548b5a7f8)
 
 ### Ejemplo de tareas completadas
-![Tareas Completadas](![image](https://github.com/user-attachments/assets/6985acd5-8fc7-47fb-abca-61001357d4a3))
+![Tareas Completadas]![1](https://github.com/user-attachments/assets/beb2a9dc-36b9-48ab-aa79-20b0af18d0ad)
+
 
 ### Formulario de creación de tareas
-![Formulario de Tareas](![image](https://github.com/user-attachments/assets/436ba222-1536-4670-bd7f-34619e8785bf))
+![Formulario de Tareas]![2](https://github.com/user-attachments/assets/c0b35904-f80a-4ef3-bd32-4bbad33fc61c)
 
-> **Nota:** Asegúrate de colocar las imágenes en la carpeta adecuada y actualizar las rutas en el README.
 
 ## Instalación Local
 
