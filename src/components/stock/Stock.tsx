@@ -38,13 +38,6 @@ import {
 } from "@/actions/stock/crud";
 import toast from "react-hot-toast";
 
-// Interfaz para el manejo de errores
-interface ErrorResponse {
-  statusCode?: number;
-  errors?: string;
-  message?: string;
-}
-
 // Schema de validación con Yup
 const stockMovementSchema = yup.object({
   productId: yup
