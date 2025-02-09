@@ -1,76 +1,155 @@
-## FeliInventorys App
+# FeliInventorys App
 
-Bienvenido a **FeliInventorys**, una aplicación de lista de tareas (To-Do) creada con **Next.js** versión 14 en el frontend y **NestJS** en el backend. Esta aplicación permite a los usuarios gestionar sus tareas de manera fácil y rápida a través de una interfaz intuitiva y un backend escalable. Este proyecto utiliza **Server Actions** en Next.js, por lo que es necesario habilitarlas.
+Bienvenido a **FeliInventory**, una aplicación de gestión de inventario robusta y moderna construida con **Next.js** versión 14 en el frontend. Esta aplicación permite a los administradores gestionar productos y su inventario de manera eficiente a través de una interfaz intuitiva que se conecta con un backend potente en NestJS.
 
 ## Demo
 
-Puedes acceder a la aplicación en vivo en el siguiente enlace:  
-[Frontend - Todo App](https://todo-frontend-next-puce.vercel.app/)
-
-> **Nota:** Para iniciar el backend, ya que está alojado en Render y puede estar en modo de suspensión, visita esta URL para activar el servidor:  
-> [Backend - Todo API](https://todo-backend-nest-jjq1.onrender.com/)
+Puedes acceder a la aplicación en vivo en los siguientes enlaces:  
+[Frontend - FeliInventorys](https://feli-inventory-frontend.vercel.app)  
+[Backend - API](https://feliinventorybackend.onrender.com/docs)
 
 ## Características
 
-- **Crear tareas:** Agrega nuevas tareas a tu lista.
-- **Marcar como completadas:** Marca tareas como completadas a medida que avanzas.
-- **Eliminar tareas:** Elimina tareas que ya no necesitas.
-- **Persistencia de datos:** La aplicación guarda tus tareas para que puedas acceder a ellas en cualquier momento.
+- **Gestión de Productos**
+  - Crear nuevos productos con SKU único
+  - Actualizar información de productos existentes
+  - Eliminar productos del inventario
+  - Visualizar lista completa de productos
 
-## Tecnologías Utilizadas
+- **Control de Inventario**
+  - Registrar entradas y salidas de stock
+  - Seguimiento en tiempo real del inventario
+  - Histórico de movimientos
+  - Alertas automáticas de stock bajo
 
-- **Frontend:** Next.js 14 (con Server Actions), React
-- **Backend:** NestJS
-- **Hosting:** Vercel (Frontend) y Render (Backend)
-
-## Requisitos Especiales
-
-Debido a que el proyecto utiliza **Server Actions** en Next.js 14, es importante habilitarlas en tu configuración. Asegúrate de tener las Server Actions activadas en tu entorno de desarrollo y producción para un funcionamiento correcto. Deben colocar `'use server'` al inicio de las acciones que requieran ejecutar en el servidor.
+- **Interfaz Intuitiva**
+  - Diseño responsive y moderno
+  - Navegación fluida entre secciones
+  - Feedback inmediato de acciones
+  - Validaciones en tiempo real
 
 ## Imágenes de Referencia
 
 ### Vista principal de la aplicación
-![Vista Principal]!![3](https://github.com/user-attachments/assets/4565e269-8222-47d4-8e44-646548b5a7f8)
+![image](https://github.com/user-attachments/assets/9821fbe8-301b-469c-9600-7f492b35a465)
 
-### Ejemplo de tareas completadas
-![Tareas Completadas]![1](https://github.com/user-attachments/assets/beb2a9dc-36b9-48ab-aa79-20b0af18d0ad)
+### Ejemplo de la página con los productos
+![image](https://github.com/user-attachments/assets/52a6f404-90b9-4d81-88f3-29361afadf59)
+
+### Formulario de creación de productos
+![image](https://github.com/user-attachments/assets/9b566b25-b87c-4b95-a924-2f27515bf314)
+
+### Ejemplo de la página de los movimientos del inventario
+![image](https://github.com/user-attachments/assets/28db9aa4-47c4-461c-b0e4-8bb45ddd2eda)
+
+### Formulario de creación de movimientos
+![image](https://github.com/user-attachments/assets/769da044-9200-4c0a-8c40-dda30494f2aa)
 
 
-### Formulario de creación de tareas
-![Formulario de Tareas]![2](https://github.com/user-attachments/assets/c0b35904-f80a-4ef3-bd32-4bbad33fc61c)
+## Tecnologías Utilizadas
 
+- **Frontend:**
+  - Next.js 14 (con Server Actions)
+  - React
+  - Tailwind CSS
+  - TypeScript
+  - SWR para fetching de datos
+  - YUP + REACT HOOK FORM
+
+- **Hosting:**
+  - Vercel (Frontend)
+  - Render (Backend)
+
+## Requisitos Especiales
+
+El proyecto utiliza **Server Actions** de Next.js 14, por lo que es necesario tener en cuenta:
+
+- Habilitar Server Actions en la configuración
+- Usar `'use server'` al inicio de las acciones del servidor
+- Configurar correctamente las variables de entorno
 
 ## Instalación Local
 
-Si deseas ejecutar esta aplicación localmente, sigue los pasos a continuación.
-
 ### Requisitos Previos
 
-- Node.js (v14 o superior)
+- Node.js (v18 o superior)
 - npm o yarn
+- Git
 
 ### Pasos de Instalación
 
-1. **Clona el repositorio:**
+1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tuusuario/todo-app.git
-   cd todo-app
+   git clone https://github.com/tuusuario/feli-inventory.git
+   cd feli-inventory
    ```
-2. **Instala las dependencias:**
-   ```bash
-     cd frontend
-    npm install
-   ```
-3. **Inicia el repositorio:**
-  ```bash
-  npm run dev
 
-  ```
-### Uso aplicativo
-0. Inicia el Backend que se encuentra en mi repositorio o usa el remoto.
-1. Asegúrate de configurar la variable de entorno `API_URL` en el archivo `.env.local` dentro de la carpeta `frontend`:
-   ```plaintext
-   API_URL=https://todo-backend-nest-jjq1.onrender.com/
+2. **Instalar dependencias:**
+   ```bash
+   npm install
    ```
-2. Accede a http://localhost:3000 en tu navegador.
-3. Crea, marca como completadas o elimina tareas según lo necesites.
+
+3. **Configurar variables de entorno:**
+   Crear archivo `.env.local` en la raíz del proyecto:
+   ```plaintext
+   API_URL = http://localhost:8080
+   ```
+
+4. **Iniciar el proyecto en desarrollo:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Acceder a la aplicación:**
+   Abrir [http://localhost:3000](http://localhost:3000) en el navegador
+
+
+## Uso de la Aplicación
+
+1. **Gestión de Productos:**
+   - Accede a la sección de productos
+   - Usa el formulario para crear nuevos productos
+   - Edita o elimina productos existentes
+   - Visualiza el stock actual
+
+2. **Movimientos de Inventario:**
+   - Registra entradas de nuevo stock
+   - Documenta salidas de productos
+   - Consulta el histórico de movimientos
+   - Monitorea alertas de stock bajo
+
+## Desarrollo y Contribución
+
+1. Crear una rama para nuevas características:
+   ```bash
+   git checkout -b feature/nueva-caracteristica
+   ```
+
+2. Realizar cambios y commits:
+   ```bash
+   git commit -m "Descripción del cambio"
+   ```
+
+3. Subir cambios y crear Pull Request:
+   ```bash
+   git push origin feature/nueva-caracteristica
+   ```
+
+## Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia la aplicación en modo producción
+- `npm run lint` - Ejecuta el linter
+- `npm run test` - Ejecuta las pruebas
+
+## Soporte
+
+Para reportar problemas o solicitar nuevas características, por favor:
+1. Revisa los issues existentes
+2. Crea un nuevo issue con detalles específicos
+3. Sigue la plantilla proporcionada
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
