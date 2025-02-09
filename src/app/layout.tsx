@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Felitask | Proyecto realizado por Jose Feliciano",
-  description: "Felitask creado con Next.js",
+  title: "FeliInventory | Proyecto realizado por Jose Feliciano",
+  description: "FeliInventory creado con Next.js",
 };
 
 export default function RootLayout({

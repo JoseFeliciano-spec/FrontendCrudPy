@@ -1,17 +1,23 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@radix-ui/react-select";
+import { Separator } from "@/components/ui/separator";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
-import { UserCircle } from "lucide-react";
-import { ChevronDown } from "lucide-react";
-import { CheckCircle, ListTodo, Clock } from "lucide-react";
+import {
+  UserCircle,
+  ChevronDown,
+  Package,
+  ArrowUpDown,
+  Bell,
+} from "lucide-react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getUser } from "@/actions/auth/getUser";
 import Home from "@/components/home/Home";
 import ButtonLogout from "@/components/auth/ButtonLogout";
+import Stock from "@/components/stock/Stock";
 
 export default async function Page() {
   const user = await getUser();
@@ -19,7 +25,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="flex justify-between items-center p-4 bg-primary text-primary-foreground">
-        <h1 className="text-2xl font-bold">FeliTask</h1>
+        <h1 className="text-2xl font-bold">FeliInventory</h1>
         {user?.message === "No se encontró token de autenticación" ? (
           <Button asChild>
             <Link href="/login">Iniciar Sesión</Link>
@@ -52,11 +58,12 @@ export default async function Page() {
             <section className="py-12 md:py-24 lg:py-32 bg-background">
               <div className="container mx-auto px-4 text-center">
                 <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl mb-4">
-                  Organiza tu vida con FeliTask
+                  Gestiona tu inventario con FeliInventory
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  La aplicación TODO-LIST más intuitiva y eficiente. Simplifica
-                  tus tareas y aumenta tu productividad.
+                  La aplicación de control de inventario más intuitiva y
+                  eficiente. Simplifica la gestión de tus productos y aumenta tu
+                  productividad.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
                   <Button asChild size="lg" className="w-full sm:w-auto">
@@ -74,19 +81,19 @@ export default async function Page() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {[
                     {
-                      icon: ListTodo,
-                      title: "Listas Ilimitadas",
-                      description: "Crea todas las listas que necesites",
+                      icon: Package,
+                      title: "Gestión de Productos",
+                      description: "Registra productos con SKU único",
                     },
                     {
-                      icon: CheckCircle,
-                      title: "Tareas Simples",
-                      description: "Añade y completa tareas fácilmente",
+                      icon: ArrowUpDown,
+                      title: "Movimientos de Inventario",
+                      description: "Controla entradas y salidas de stock",
                     },
                     {
-                      icon: Clock,
-                      title: "Recordatorios",
-                      description: "Nunca olvides una tarea importante",
+                      icon: Bell,
+                      title: "Alertas de Stock",
+                      description: "Recibe notificaciones de stock bajo",
                     },
                   ].map((feature, index) => (
                     <div
@@ -109,11 +116,11 @@ export default async function Page() {
             <section className="py-12 md:py-24 bg-primary text-primary-foreground">
               <div className="container mx-auto px-4 text-center">
                 <h3 className="text-2xl font-bold mb-4">
-                  ¿Listo para aumentar tu productividad?
+                  ¿Listo para optimizar tu inventario?
                 </h3>
                 <p className="mb-8 max-w-2xl mx-auto">
-                  Únete a miles de usuarios que ya han simplificado su vida con
-                  TaskMaster.
+                  Únete a miles de empresas que ya han simplificado su gestión
+                  de inventario con FeliInventory.
                 </p>
                 <Button size="lg" variant="secondary" asChild>
                   <Link href={"/login"}>Comienza Ahora - ¡Es Gratis!</Link>
@@ -123,12 +130,23 @@ export default async function Page() {
           </main>
 
           <footer className="p-4 text-center text-sm text-muted-foreground bg-background">
-            © {new Date().getFullYear()} FeliTaks. Todos los derechos
+            © {new Date().getFullYear()} FeliInventory. Todos los derechos
             reservados.
           </footer>
         </>
       ) : (
-        <Home />
+        <Tabs defaultValue="home" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mt-2">
+            <TabsTrigger value="home">Productos</TabsTrigger>
+            <TabsTrigger value="stock">Movimientos de stock</TabsTrigger>
+          </TabsList>
+          <TabsContent value="home">
+            <Home />
+          </TabsContent>
+          <TabsContent value="stock">
+            <Stock />
+          </TabsContent>
+        </Tabs>
       )}
     </div>
   );
