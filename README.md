@@ -80,8 +80,8 @@ El proyecto utiliza **Server Actions** de Next.js 14, por lo que es necesario te
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tuusuario/feli-inventory.git
-   cd feli-inventory
+   git clone https://github.com/tuusuario/feli-inventory.git](https://github.com/JoseFeliciano-spec/FeliInventoryFrontend.git)
+   cd FeliInventoryFrontend
    ```
 
 2. **Instalar dependencias:**
