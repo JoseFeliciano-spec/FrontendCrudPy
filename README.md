@@ -1,4 +1,4 @@
-# FeliInventorys App
+# FeliInventory App
 
 Bienvenido a **FeliInventory**, una aplicación de gestión de inventario robusta y moderna construida con **Next.js** versión 14 en el frontend. Esta aplicación permite a los administradores gestionar productos y su inventario de manera eficiente a través de una interfaz intuitiva que se conecta con un backend potente en NestJS.
 
