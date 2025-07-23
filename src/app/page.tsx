@@ -9,23 +9,27 @@ import {
 import {
   UserCircle,
   ChevronDown,
-  Package,
-  ArrowUpDown,
-  Bell,
+  Truck,
+  MapPin,
+  AlertTriangle,
 } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getUser } from "@/actions/auth/getUser";
-import Home from "@/components/home/Home";
 import ButtonLogout from "@/components/auth/ButtonLogout";
-import Stock from "@/components/stock/Stock";
-
+import CreateDriverVehiclePage from "@/components/driver/Driver";
+import DriversGrid from "@/components/driver/DriverGrid";
+/* import ButtonLogout from "@/components/auth/ButtonLogout";
+import Vehicles from "@/components/vehicles/Vehicles"; // Asumiendo un componente para gestión de vehículos
+import Drivers from "@/components/drivers/Drivers"; // Asumiendo un componente para gestión de conductores
+import Locations from "@/components/locations/Locations"; // Asumiendo un componente para monitoreo de ubicaciones GPS
+ */
 export default async function Page() {
   const user = await getUser();
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <header className="flex justify-between items-center p-4 bg-primary text-primary-foreground">
-        <h1 className="text-2xl font-bold">FeliInventory</h1>
+        <h1 className="text-2xl font-bold">Simon Movilidad</h1>
         {user?.message === "No se encontró token de autenticación" ? (
           <Button asChild>
             <Link href="/login">Iniciar Sesión</Link>
@@ -58,12 +62,12 @@ export default async function Page() {
             <section className="py-12 md:py-24 lg:py-32 bg-background">
               <div className="container mx-auto px-4 text-center">
                 <h2 className="text-3xl font-extrabold sm:text-4xl md:text-5xl mb-4">
-                  Gestiona tu inventario con FeliInventory
+                  Monitorea tu flota vehicular con Simon Movilidad
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                  La aplicación de control de inventario más intuitiva y
-                  eficiente. Simplifica la gestión de tus productos y aumenta tu
-                  productividad.
+                  La plataforma más avanzada para gestión de flotas IoT. Rastrea
+                  ubicaciones en tiempo real, recibe alertas predictivas y
+                  optimiza rutas con datos GPS y sensores.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
                   <Button asChild size="lg" className="w-full sm:w-auto">
@@ -81,19 +85,21 @@ export default async function Page() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {[
                     {
-                      icon: Package,
-                      title: "Gestión de Productos",
-                      description: "Registra productos con SKU único",
+                      icon: Truck,
+                      title: "Gestión de Vehículos",
+                      description:
+                        "Registra y monitorea flotas con datos en tiempo real",
                     },
                     {
-                      icon: ArrowUpDown,
-                      title: "Movimientos de Inventario",
-                      description: "Controla entradas y salidas de stock",
+                      icon: MapPin,
+                      title: "Rastreo GPS",
+                      description: "Ubicaciones en vivo y rutas históricas",
                     },
                     {
-                      icon: Bell,
-                      title: "Alertas de Stock",
-                      description: "Recibe notificaciones de stock bajo",
+                      icon: AlertTriangle,
+                      title: "Alertas Predictivas",
+                      description:
+                        "Notificaciones de bajo combustible o anomalías",
                     },
                   ].map((feature, index) => (
                     <div
@@ -116,11 +122,11 @@ export default async function Page() {
             <section className="py-12 md:py-24 bg-primary text-primary-foreground">
               <div className="container mx-auto px-4 text-center">
                 <h3 className="text-2xl font-bold mb-4">
-                  ¿Listo para optimizar tu inventario?
+                  ¿Listo para optimizar tu flota?
                 </h3>
                 <p className="mb-8 max-w-2xl mx-auto">
-                  Únete a miles de empresas que ya han simplificado su gestión
-                  de inventario con FeliInventory.
+                  Únete a empresas que ya monitorean sus vehículos de manera
+                  eficiente con Simon Movilidad.
                 </p>
                 <Button size="lg" variant="secondary" asChild>
                   <Link href={"/login"}>Comienza Ahora - ¡Es Gratis!</Link>
@@ -130,22 +136,28 @@ export default async function Page() {
           </main>
 
           <footer className="p-4 text-center text-sm text-muted-foreground bg-background">
-            © {new Date().getFullYear()} FeliInventory. Todos los derechos
+            © {new Date().getFullYear()} Simon Movilidad. Todos los derechos
             reservados.
           </footer>
         </>
       ) : (
-        <Tabs defaultValue="home" className="w-full">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mt-2">
-            <TabsTrigger value="home">Productos</TabsTrigger>
-            <TabsTrigger value="stock">Movimientos de stock</TabsTrigger>
+        <Tabs defaultValue="list" className="w-full">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mt-2">
+            <TabsTrigger value="list">Lista conductores</TabsTrigger>
+            <TabsTrigger value="vehicles">Nuevos conductores</TabsTrigger>
           </TabsList>
-          <TabsContent value="home">
-            <Home />
-          </TabsContent>
-          <TabsContent value="stock">
-            <Stock />
-          </TabsContent>
+
+          {
+            <TabsContent value="vehicles">
+              <CreateDriverVehiclePage user={user} />
+            </TabsContent>
+          }
+
+          {
+            <TabsContent value="list">
+              <DriversGrid user={user} />
+            </TabsContent>
+          }
         </Tabs>
       )}
     </div>

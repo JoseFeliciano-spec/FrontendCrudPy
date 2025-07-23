@@ -7,8 +7,10 @@ interface UserResponse {
   data?: {
     id: string;
     name: string;
+    token: string;
     email: string;
     createdAt: string;
+    role?: string;
   };
   errors?: string;
 }
@@ -54,6 +56,8 @@ export async function getUser(): Promise<UserResponse> {
       data: {
         id: data.data.id,
         name: data.data.name,
+        token: token?.value,
+        role: data?.data?.role,
         email: data.data.email,
         createdAt: data.data.createdAt,
       },
