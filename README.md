@@ -48,8 +48,8 @@ Sigue los siguientes pasos para instalar y ejecutar el proyecto localmente.
 1. **Clonar el repositorio:**
 
    ```bash
-   git clone https://github.com/your_username/mapainteractivofrontend.git
-   cd mapainteractivofrontend
+   git clone https://github.com/JoseFeliciano-spec/MapaInteractivoFrontend.git
+   cd MapaInteractivoFrontend
   ``
 
 2. **Instalar las dependencias:**
