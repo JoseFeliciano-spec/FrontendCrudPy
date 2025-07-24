@@ -152,6 +152,3 @@ Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
 Desarrollado por **@JoseFelicianospec**.
 No dudes en contribuir, proponer mejoras o abrir issues.
 
----
-¿Deseas que te lo genere como archivo descargable `.md` directamente? También puedo ayudarte a mejorarlo visualmente en GitHub si lo estás subiendo allí.
-```
