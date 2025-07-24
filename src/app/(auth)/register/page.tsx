@@ -11,7 +11,7 @@ export default function LoginPage() {
     <div className="h-full w-full flex flex-col justify-center items-center">
       <div className="max-md:mt-4">
         <h1 className="text-lg font-semibold text-center">
-          Bienvenido de vuelta a FeliInventorys
+          Bienvenido de vuelta a MapaApps
         </h1>
         <h2 className="text-base text-center">
           Ingresa la información para registrarte

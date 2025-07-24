@@ -17,7 +17,7 @@ import {
   Badge,
   Container,
 } from "@chakra-ui/react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { CheckIcon, UserIcon, CarIcon, IdCardIcon } from "lucide-react";
 
 // Esquemas de validación con Yup actualizados
@@ -260,8 +260,6 @@ export default function CreateDriverVehiclePage({ user }: any) {
 
   return (
     <Container maxW="container.md" className="py-8">
-      <Toaster position="top-center" reverseOrder={false} gutter={8} />
-
       {/* Header */}
       <div className="space-y-8 mb-8">
         <div className="text-center">

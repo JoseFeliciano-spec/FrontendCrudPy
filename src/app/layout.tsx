@@ -18,8 +18,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "FeliInventory | Proyecto realizado por Jose Feliciano",
-  description: "FeliInventory creado con Next.js",
+  title: "MapaApp | Proyecto realizado por Jose Feliciano",
+  description: "MapaApp creado con Next.js",
 };
 
 export default function RootLayout({
@@ -32,15 +32,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <QueryProvider>
-        <Provider>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Provider>
             {children}
             {modal}
             <Toaster position="top-right" reverseOrder={false} />
-          </body>
-        </Provider>
+          </Provider>
+        </body>
       </QueryProvider>
     </html>
   );

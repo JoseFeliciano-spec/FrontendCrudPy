@@ -30,7 +30,7 @@ export default function ModalResponsive() {
       <div className="flex flex-col justify-center items-center">
         <div>
           <h1 className="text-lg font-semibold text-center">
-            Bienvenido de vuelta a FeliInventory
+            Bienvenido de vuelta a MapaApp
           </h1>
           <h2 className="text-base text-center">
             Ingresa tu usuario y contraseña para continuar
@@ -61,7 +61,7 @@ export default function ModalResponsive() {
       <div className="flex flex-col justify-center items-center">
         <div>
           <h1 className="text-lg font-semibold text-center">
-            Bienvenido de vuelta a FeliInventory
+            Bienvenido de vuelta a MapaApp
           </h1>
           <h2 className="text-base text-center">
             Ingresa tu usuario y contraseña para continuar

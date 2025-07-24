@@ -33,7 +33,7 @@ import {
   Separator,
   For,
 } from "@chakra-ui/react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import {
   UserIcon,
   CarIcon,
@@ -282,8 +282,6 @@ export default function DriversGrid({ user }: DriversGridProps) {
 
   return (
     <Container maxW="container.xl" py={8}>
-      <Toaster position="top-center" reverseOrder={false} />
-
       {/* Header con estadísticas completas */}
       <Box mb={8}>
         <Flex justify="space-between" align="center" mb={4}>
@@ -296,7 +294,7 @@ export default function DriversGrid({ user }: DriversGridProps) {
               Gestión de Conductores
             </Heading>
             <Text color="gray.600" fontSize="lg" mt={2}>
-              Sistema de monitoreo IoT - Simon Movilidad
+              Sistema de monitoreo IoT - Mapa Movilidad
             </Text>
           </div>
         </Flex>
