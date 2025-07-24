@@ -1,169 +1,159 @@
-# MapaApp App
+# 🚗 Mapa Movilidad
 
-Bienvenido a **MapaApp**, una aplicación de gestión de inventario robusta y moderna construida con **Next.js** versión 14 en el frontend. Esta aplicación permite a los administradores gestionar productos y su inventario de manera eficiente a través de una interfaz intuitiva que se conecta con un backend potente en NestJS.
+**Mapa Movilidad** es una aplicación web moderna para la gestión de flotas de vehículos en tiempo real, desarrollada con **Next.js**, **TypeScript** y un ecosistema de tecnologías modernas. Permite monitorear ubicaciones en vivo, gestionar conductores y recibir alertas predictivas desde una interfaz adaptable y segura.
 
-## Demo
+---
 
-Puedes acceder a la aplicación en vivo en los siguientes enlaces:  
-[Frontend - MapaApps](https://feli-inventory-frontend.vercel.app)  
-[Backend - API](https://MapaAppbackend.onrender.com/docs)
+## ✨ Características
 
-## Características
+- **Seguimiento GPS en Tiempo Real** – Visualiza las ubicaciones de los vehículos en un mapa interactivo.
+- **Gestión de Vehículos** – Registra, actualiza y administra los vehículos de tu flota.
+- **Interfaz por Roles** – Paneles diferenciados para administradores y conductores.
+- **Sistema de Autenticación** – Inicio de sesión y registro seguro de usuarios.
+- **Alertas Predictivas** – Notificaciones automáticas, por ejemplo, de bajo nivel de combustible.
+- **Diseño Adaptativo** – Funciona perfectamente en computadoras, tabletas y dispositivos móviles.
 
-- **Gestión de Productos**
+---
 
-  - Crear nuevos productos con SKU único
-  - Actualizar información de productos existentes
-  - Eliminar productos del inventario
-  - Visualizar lista completa de productos
+## 🧰 Tecnologías Utilizadas
 
-- **Control de Inventario**
+### 📦 Frontend
 
-  - Registrar entradas y salidas de stock
-  - Seguimiento en tiempo real del inventario
-  - Histórico de movimientos
-  - Alertas automáticas de stock bajo
+- [**Next.js**](https://nextjs.org/) – Framework React para SSR y SSG.
+- [**TypeScript**](https://www.typescriptlang.org/) – Superset tipado de JavaScript.
+- [**Tailwind CSS**](https://tailwindcss.com/) – Framework CSS basado en utilidades.
+- [**Chakra UI**](https://chakra-ui.com/) y [**Radix UI**](https://www.radix-ui.com/) – Bibliotecas de componentes accesibles y personalizables.
+- [**React Leaflet**](https://react-leaflet.js.org/) – Integración de Leaflet para mapas interactivos.
+- [**Socket.IO Client**](https://socket.io/docs/v4/client-api/) – Comunicación en tiempo real bidireccional.
 
-- **Interfaz Intuitiva**
-  - Diseño responsive y moderno
-  - Navegación fluida entre secciones
-  - Feedback inmediato de acciones
-  - Validaciones en tiempo real
+### ⚙️ Gestión de Estado y Datos
 
-## Imágenes de Referencia
+- [**Zustand**](https://github.com/pmndrs/zustand) – Estado global simple y escalable.
+- [**Axios**](https://axios-http.com/) – Cliente HTTP para solicitudes al backend.
+- [**React Hook Form**](https://react-hook-form.com/) – Manejo de formularios eficiente y validaciones.
 
-### Vista principal de la aplicación
+---
 
-![image](https://github.com/user-attachments/assets/9821fbe8-301b-469c-9600-7f492b35a465)
+## 🚀 Primeros Pasos
 
-### Ejemplo de la página con los productos
+Sigue los siguientes pasos para instalar y ejecutar el proyecto localmente.
 
-![image](https://github.com/user-attachments/assets/52a6f404-90b9-4d81-88f3-29361afadf59)
+### ✅ Requisitos Previos
 
-### Formulario de creación de productos
-
-![image](https://github.com/user-attachments/assets/9b566b25-b87c-4b95-a924-2f27515bf314)
-
-### Ejemplo de la página de los movimientos del inventario
-
-![image](https://github.com/user-attachments/assets/28db9aa4-47c4-461c-b0e4-8bb45ddd2eda)
-
-### Formulario de creación de movimientos
-
-![image](https://github.com/user-attachments/assets/769da044-9200-4c0a-8c40-dda30494f2aa)
-
-## Tecnologías Utilizadas
-
-- **Frontend:**
-
-  - Next.js 14 (con Server Actions)
-  - React
-  - Tailwind CSS
-  - TypeScript
-  - SWR para fetching de datos
-  - YUP + REACT HOOK FORM
-
-- **Hosting:**
-  - Vercel (Frontend)
-  - Render (Backend)
-
-## Requisitos Especiales
-
-El proyecto utiliza **Server Actions** de Next.js 14, por lo que es necesario tener en cuenta:
-
-- Habilitar Server Actions en la configuración
-- Usar `'use server'` al inicio de las acciones del servidor
-- Configurar correctamente las variables de entorno
-
-## Instalación Local
-
-### Requisitos Previos
-
-- Node.js (v18 o superior)
+- Node.js v20 o superior
 - npm o yarn
-- Git
 
-### Pasos de Instalación
+### 📥 Instalación
 
 1. **Clonar el repositorio:**
 
    ```bash
-   git clone https://github.com/tuusuario/feli-inventory.git](https://github.com/JoseFeliciano-spec/MapaAppFrontend.git)
-   cd MapaAppFrontend
-   ```
+   git clone https://github.com/your_username/mapainteractivofrontend.git
+   cd mapainteractivofrontend
+  ``
 
-2. **Instalar dependencias:**
+2. **Instalar las dependencias:**
 
    ```bash
    npm install
+   # o con yarn
+   yarn install
    ```
 
-3. **Configurar variables de entorno:**
-   Crear archivo `.env.local` en la raíz del proyecto:
+### ⚙️ Variables de Entorno
 
-   ```plaintext
-   API_URL = http://localhost:8080
-   ```
+Crea un archivo `.env.local` en la raíz del proyecto con el siguiente contenido:
 
-4. **Iniciar el proyecto en desarrollo:**
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080
+```
 
-   ```bash
-   npm run dev
-   ```
+> También puedes usar `.env` para variables del lado del servidor como:
+> `API_URL=http://localhost:8080`
 
-5. **Acceder a la aplicación:**
-   Abrir [http://localhost:3000](http://localhost:3000) en el navegador
+---
 
-## Uso de la Aplicación
+### ▶️ Ejecutar la Aplicación
 
-1. **Gestión de Productos:**
+Para iniciar el servidor en modo desarrollo:
 
-   - Accede a la sección de productos
-   - Usa el formulario para crear nuevos productos
-   - Edita o elimina productos existentes
-   - Visualiza el stock actual
+```bash
+npm run dev
+```
 
-2. **Movimientos de Inventario:**
-   - Registra entradas de nuevo stock
-   - Documenta salidas de productos
-   - Consulta el histórico de movimientos
-   - Monitorea alertas de stock bajo
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-## Desarrollo y Contribución
+---
 
-1. Crear una rama para nuevas características:
+## 🧾 Scripts Disponibles
 
-   ```bash
-   git checkout -b feature/nueva-caracteristica
-   ```
+* `npm run dev` – Ejecuta la aplicación en modo desarrollo.
+* `npm run build` – Construye la versión para producción.
+* `npm run start` – Inicia la aplicación en modo producción.
+* `npm run lint` – Ejecuta el linter para mantener el código limpio.
 
-2. Realizar cambios y commits:
+---
 
-   ```bash
-   git commit -m "Descripción del cambio"
-   ```
+## 🗂️ Estructura del Proyecto
 
-3. Subir cambios y crear Pull Request:
-   ```bash
-   git push origin feature/nueva-caracteristica
-   ```
+```txt
+.
+├── public/                   # Archivos estáticos (imágenes, íconos)
+├── src/
+│   ├── app/                  # Estructura App Router (rutas, layouts)
+│   │   ├── (auth)/           # Rutas de login y registro
+│   │   ├── @modal/           # Rutas paralelas (modales)
+│   │   └── layout.tsx        # Layout raíz de la aplicación
+│   ├── components/           # Componentes reutilizables de UI y lógica
+│   │   ├── auth/             # Componentes de autenticación
+│   │   ├── driver/           # Componentes para conductores
+│   │   ├── maps/             # Mapa en tiempo real
+│   │   └── ui/               # Elementos UI personalizados
+│   ├── actions/              # Acciones del lado del servidor (auth, revalidación)
+│   ├── lib/                  # Utilidades y configuraciones compartidas
+│   └── store/                # Estado global con Zustand
+├── .env.local                # Variables de entorno
+├── tailwind.config.ts        # Configuración de Tailwind CSS
+├── tsconfig.json             # Configuración de TypeScript
+└── next.config.mjs           # Configuración de Next.js
+```
 
-## Scripts Disponibles
+---
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Construye la aplicación para producción
-- `npm run start` - Inicia la aplicación en modo producción
-- `npm run lint` - Ejecuta el linter
-- `npm run test` - Ejecuta las pruebas
+## 🖼️ Capturas de Pantalla
 
-## Soporte
+Agrega aquí las imágenes de tu aplicación para una mejor visualización del producto.
 
-Para reportar problemas o solicitar nuevas características, por favor:
+### 🔐 Página de Inicio de Sesión
 
-1. Revisa los issues existentes
-2. Crea un nuevo issue con detalles específicos
-3. Sigue la plantilla proporcionada
+![Login](./public/screenshots/login.png)
 
-## Licencia
+### 🗺️ Interfaz del inicio y listado
+<img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/fb401a40-2be1-456d-ad5f-dc5e587e2eb5" />
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
+### 🗺️ Creación del conductor
+<img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/00884388-f71d-4720-b4c6-c76fcd57734e" />
+
+### 🗺️ Mapa en tiempo Real
+<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/6856d60f-7ffa-459d-a9ef-1b16d4264745" />
+
+### 🗺️ Vista del conductor
+<img width="1916" height="886" alt="image" src="https://github.com/user-attachments/assets/8ff54ec8-cb04-42b5-86a9-5f3603a24d71" />
+
+
+---
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por **@JoseFelicianospec**.
+No dudes en contribuir, proponer mejoras o abrir issues.
+
+---
+¿Deseas que te lo genere como archivo descargable `.md` directamente? También puedo ayudarte a mejorarlo visualmente en GitHub si lo estás subiendo allí.
+```
