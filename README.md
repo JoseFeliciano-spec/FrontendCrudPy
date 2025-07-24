@@ -55,7 +55,7 @@ Sigue los siguientes pasos para instalar y ejecutar el proyecto localmente.
 2. **Instalar las dependencias:**
 
    ```bash
-   npm install
+   npm install --force
    # o con yarn
    yarn install
    ```
@@ -66,12 +66,8 @@ Crea un archivo `.env.local` en la raíz del proyecto con el siguiente contenido
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8080
+API_URL=http://localhost:8080
 ```
-
-> También puedes usar `.env` para variables del lado del servidor como:
-> `API_URL=http://localhost:8080`
-
----
 
 ### ▶️ Ejecutar la Aplicación
 
@@ -124,9 +120,11 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el 
 
 Agrega aquí las imágenes de tu aplicación para una mejor visualización del producto.
 
-### 🔐 Página de Inicio de Sesión
+### 🔐 Página de Inicio
+<img width="1910" height="925" alt="image" src="https://github.com/user-attachments/assets/238015d3-cf7d-42ef-bd61-8cdd87474943" />
 
-![Login](./public/screenshots/login.png)
+### 🔐 Página de Inicio de sesión
+<img width="515" height="612" alt="image" src="https://github.com/user-attachments/assets/fef73cae-2014-4b80-a7eb-be00f993c6c0" />
 
 ### 🗺️ Interfaz del inicio y listado
 <img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/fb401a40-2be1-456d-ad5f-dc5e587e2eb5" />
