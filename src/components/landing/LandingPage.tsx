@@ -47,7 +47,7 @@ export default function LandingPage() {
                 variant="outline"
                 className="border-2 hover:bg-slate-50"
               >
-                <Link href={"/registrar"}>Registrar</Link>
+                <Link href={"/register"}>Registrar</Link>
               </Button>
             </div>
           </div>

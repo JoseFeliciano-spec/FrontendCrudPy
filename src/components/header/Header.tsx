@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
-import { UserCircle, ChevronDown, Menu } from "lucide-react";
+import { UserCircle, ChevronDown } from "lucide-react";
 import ButtonLogout from "@/components/auth/ButtonLogout";
 import ButtonOpen from "./ButtonOpen";
 

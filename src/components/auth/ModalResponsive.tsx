@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useMediaQuery } from "usehooks-ts";
 import ModalSSR from "@/components/home/ModalSSR";
 import DialogSSR from "@/components/home/DialogSSR";
-import { Separator } from "@/components/ui/separator";
 
 const DynamicFormAuth = dynamic(
   () => {

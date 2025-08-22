@@ -3,17 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useSidebarStore } from "@/store/useSideBarStore";
-import {
-  Home,
-  Package,
-  Settings,
-  FileText,
-  BarChart3,
-  X,
-  ChevronLeft,
-  Users,
-  Router,
-} from "lucide-react";
+import { Home, X } from "lucide-react";
 
 const navigation = [{ name: "Dashboard", href: "/", icon: Home }];
 

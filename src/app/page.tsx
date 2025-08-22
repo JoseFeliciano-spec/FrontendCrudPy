@@ -1,7 +1,6 @@
 import { getUser } from "@/actions/auth/getUser";
 import dynamic from "next/dynamic";
 import LandingPage from "@/components/landing/LandingPage";
-import Header from "@/components/header/Header";
 import LayoutSideBar from "@/components/header/LayoutSideBar";
 
 const Product = dynamic(() => import("@/components/product/Product"), {

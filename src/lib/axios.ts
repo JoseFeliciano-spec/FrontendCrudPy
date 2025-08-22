@@ -4,12 +4,6 @@ import Swal from "sweetalert2";
 
 let expired = false;
 
-function showProgressBar() {
-  document.body.classList.add("loading-indicator");
-  const progressBar = document.getElementById("loading-bar");
-  progressBar?.classList.remove("loading-hide");
-}
-
 function hideProgressBar() {
   document.body.classList.remove("loading-indicator");
   const progressBar = document.getElementById("loading-bar");

@@ -1,13 +1,7 @@
 // components/ProductsManager.tsx
 "use client";
 import { useState, useEffect } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -207,8 +201,7 @@ export default function ProductsManager({ user }: ProductsManagerProps) {
             <AlertDialogHeader>
               <AlertDialogTitle>Eliminar Producto</AlertDialogTitle>
               <AlertDialogDescription>
-                ¿Estás seguro de que deseas eliminar "{product.marca} -{" "}
-                {product.titulo}"? Esta acción no se puede deshacer.
+                {`¿Estás seguro de que deseas eliminar "${product.marca} - ${product.titulo}"? Esta acción no se puede deshacer.`}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -434,9 +427,7 @@ export default function ProductsManager({ user }: ProductsManagerProps) {
                                   Eliminar Producto
                                 </AlertDialogTitle>
                                 <AlertDialogDescription>
-                                  ¿Estás seguro de que deseas eliminar "
-                                  {product.marca} - {product.titulo}"? Esta
-                                  acción no se puede deshacer.
+                                  {`¿Estás seguro de que deseas eliminar "${product.marca} - ${product.titulo}"? Esta acción no se puede deshacer.`}
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <AlertDialogFooter>
@@ -540,9 +531,7 @@ export default function ProductsManager({ user }: ProductsManagerProps) {
                                             Eliminar Producto
                                           </AlertDialogTitle>
                                           <AlertDialogDescription>
-                                            ¿Estás seguro de que deseas eliminar
-                                            "{product.marca} - {product.titulo}
-                                            "? Esta acción no se puede deshacer.
+                                            {`¿Estás seguro de que deseas eliminar "${product.marca} - ${product.titulo}"? Esta acción no se puede deshacer.`}
                                           </AlertDialogDescription>
                                         </AlertDialogHeader>
                                         <AlertDialogFooter>
