@@ -1,17 +1,18 @@
-# 🚗 Mapa Movilidad
+# 📦 Aplicación de Gestión de Productos (frontendcrudpy)
 
-**Mapa Movilidad** es una aplicación web moderna para la gestión de flotas de vehículos en tiempo real, desarrollada con **Next.js**, **TypeScript** y un ecosistema de tecnologías modernas. Permite monitorear ubicaciones en vivo, gestionar conductores y recibir alertas predictivas desde una interfaz adaptable y segura.
+**Aplicación de Gestión de Productos** es una aplicación web moderna para administrar un catálogo de productos, desarrollada con **Next.js**, **TypeScript** y un stack de tecnologías frontend modernas. Permite a los usuarios realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en productos a través de una interfaz segura, responsiva e intuitiva.
 
 ---
 
 ## ✨ Características
 
-- **Seguimiento GPS en Tiempo Real** – Visualiza las ubicaciones de los vehículos en un mapa interactivo.
-- **Gestión de Vehículos** – Registra, actualiza y administra los vehículos de tu flota.
-- **Interfaz por Roles** – Paneles diferenciados para administradores y conductores.
-- **Sistema de Autenticación** – Inicio de sesión y registro seguro de usuarios.
-- **Alertas Predictivas** – Notificaciones automáticas, por ejemplo, de bajo nivel de combustible.
-- **Diseño Adaptativo** – Funciona perfectamente en computadoras, tabletas y dispositivos móviles.
+- **Gestión Completa de Productos** – Crea, visualiza, actualiza y elimina productos con facilidad.
+- **Múltiples Vistas de Diseño** – Cambia entre una vista de **Tabla** detallada, una cuadrícula visual de **Tarjetas** y una vista de **Formulario** dedicada para gestionar productos.
+- **Interfaz con Estado** – La aplicación recuerda tu diseño de vista preferido.
+- **Autenticación Segura** – Sistema seguro de inicio de sesión y registro de usuarios.
+- **Modales y Diálogos Interactivos** – Experiencia de usuario optimizada para crear, editar y confirmar acciones.
+- **Manejo de Datos en el Cliente** – Obtención de datos y gestión de estado eficientes con TanStack Query y Zustand.
+- **Diseño Responsivo** – Totalmente funcional en computadoras de escritorio, tabletas y dispositivos móviles.
 
 ---
 
@@ -19,46 +20,48 @@
 
 ### 📦 Frontend
 
-- [**Next.js**](https://nextjs.org/) – Framework React para SSR y SSG.
-- [**TypeScript**](https://www.typescriptlang.org/) – Superset tipado de JavaScript.
-- [**Tailwind CSS**](https://tailwindcss.com/) – Framework CSS basado en utilidades.
-- [**Chakra UI**](https://chakra-ui.com/) y [**Radix UI**](https://www.radix-ui.com/) – Bibliotecas de componentes accesibles y personalizables.
-- [**React Leaflet**](https://react-leaflet.js.org/) – Integración de Leaflet para mapas interactivos.
-- [**Socket.IO Client**](https://socket.io/docs/v4/client-api/) – Comunicación en tiempo real bidireccional.
+- [**Next.js**](https://nextjs.org/) – Framework de React para renderizado del lado del servidor y generación de sitios estáticos.
+- [**TypeScript**](https://www.typescriptlang.org/) – Superconjunto de JavaScript con tipado estático.
+- [**Tailwind CSS**](https://tailwindcss.com/) – Un framework de CSS "utility-first" para un desarrollo rápido de la interfaz de usuario.
+- [**Radix UI**](https://www.radix-ui.com/) – Componentes accesibles y sin estilos para construir sistemas de diseño de alta calidad.
+- [**Lucide React**](https://lucide.dev/) – Una librería de íconos hermosa y consistente.
 
 ### ⚙️ Gestión de Estado y Datos
 
-- [**Zustand**](https://github.com/pmndrs/zustand) – Estado global simple y escalable.
-- [**Axios**](https://axios-http.com/) – Cliente HTTP para solicitudes al backend.
-- [**React Hook Form**](https://react-hook-form.com/) – Manejo de formularios eficiente y validaciones.
+- [**TanStack Query**](https://tanstack.com/query/latest) – Potente gestor de estado asíncrono para obtener, cachear y actualizar datos.
+- [**Zustand**](https://github.com/pmndrs/zustand) – Una solución de gestión de estado pequeña, rápida y escalable.
+- [**Axios**](https://axios-http.com/) – Cliente HTTP basado en promesas para realizar peticiones al backend.
+
+### 📋 Formularios
+
+- [**React Hook Form**](https://react-hook-form.com/) – Formularios eficientes, flexibles y extensibles con validación fácil de usar.
+- [**Zod**](https://zod.dev/) – Librería para declaración y validación de esquemas "TypeScript-first".
 
 ---
 
 ## 🚀 Primeros Pasos
 
-Sigue los siguientes pasos para instalar y ejecutar el proyecto localmente.
+Sigue estos pasos para instalar y ejecutar el proyecto localmente.
 
-### ✅ Requisitos Previos
+### ✅ Prerrequisitos
 
 - Node.js v20 o superior
 - npm o yarn
 
 ### 📥 Instalación
 
-1. **Clonar el repositorio:**
+1.  **Clona el repositorio:**
+    ```bash
+    git clone <your-repository-url>
+    cd frontendcrudpy
+    ```
 
-   ```bash
-   git clone https://github.com/JoseFeliciano-spec/MapaInteractivoFrontend.git
-   cd MapaInteractivoFrontend
-  ``
-
-2. **Instalar las dependencias:**
-
-   ```bash
-   npm install --force
-   # o con yarn
-   yarn install
-   ```
+2.  **Instala las dependencias:**
+    ```bash
+    npm install
+    # o con yarn
+    yarn install
+    ```
 
 ### ⚙️ Variables de Entorno
 
@@ -69,9 +72,9 @@ NEXT_PUBLIC_API_URL=http://localhost:8080
 API_URL=http://localhost:8080
 ```
 
-### ▶️ Ejecutar la Aplicación
+### ▶️ Ejecuta la Aplicación
 
-Para iniciar el servidor en modo desarrollo:
+Para iniciar el servidor de desarrollo:
 
 ```bash
 npm run dev
@@ -83,10 +86,10 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el 
 
 ## 🧾 Scripts Disponibles
 
-* `npm run dev` – Ejecuta la aplicación en modo desarrollo.
-* `npm run build` – Construye la versión para producción.
-* `npm run start` – Inicia la aplicación en modo producción.
-* `npm run lint` – Ejecuta el linter para mantener el código limpio.
+-   `npm run dev` – Ejecuta la aplicación en modo de desarrollo.
+-   `npm run build` – Compila la aplicación para producción.
+-   `npm run start` – Inicia un servidor de producción.
+-   `npm run lint` – Ejecuta el linter para verificar la calidad del código.
 
 ---
 
@@ -96,19 +99,19 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el 
 .
 ├── public/                   # Archivos estáticos (imágenes, íconos)
 ├── src/
-│   ├── app/                  # Estructura App Router (rutas, layouts)
-│   │   ├── (auth)/           # Rutas de login y registro
-│   │   ├── @modal/           # Rutas paralelas (modales)
+│   ├── app/                  # Estructura de App Router (rutas, layouts)
+│   │   ├── (auth)/           # Rutas de autenticación (login, registro)
+│   │   ├── @modal/           # Rutas interceptadas para modales
 │   │   └── layout.tsx        # Layout raíz de la aplicación
-│   ├── components/           # Componentes reutilizables de UI y lógica
-│   │   ├── auth/             # Componentes de autenticación
-│   │   ├── driver/           # Componentes para conductores
-│   │   ├── maps/             # Mapa en tiempo real
-│   │   └── ui/               # Elementos UI personalizados
-│   ├── actions/              # Acciones del lado del servidor (auth, revalidación)
-│   ├── lib/                  # Utilidades y configuraciones compartidas
+│   ├── components/           # Componentes de UI y lógica reutilizables
+│   │   ├── auth/             # Componentes relacionados con la autenticación
+│   │   ├── product/          # Componentes de gestión de productos (manager, formularios)
+│   │   └── ui/               # Elementos de UI genéricos (botones, diálogos, etc.)
+│   ├── actions/              # Server Actions (auth, revalidación)
+│   ├── hooks/                # Hooks personalizados (ej., useProducts)
+│   ├── lib/                  # Utilidades y configuraciones compartidas (axios)
 │   └── store/                # Estado global con Zustand
-├── .env.local                # Variables de entorno
+├── .env.local                # Variables de entorno locales
 ├── tailwind.config.ts        # Configuración de Tailwind CSS
 ├── tsconfig.json             # Configuración de TypeScript
 └── next.config.mjs           # Configuración de Next.js
@@ -118,37 +121,41 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el 
 
 ## 🖼️ Capturas de Pantalla
 
-Agrega aquí las imágenes de tu aplicación para una mejor visualización del producto.
+### Página de Inicio
+<img width="1919" height="927" alt="image" src="https://github.com/user-attachments/assets/494221f2-6073-4a7f-867b-934512674b35" />
 
-### 🔐 Página de Inicio
-<img width="1910" height="925" alt="image" src="https://github.com/user-attachments/assets/238015d3-cf7d-42ef-bd61-8cdd87474943" />
+### Página de registro
+<img width="1919" height="922" alt="image" src="https://github.com/user-attachments/assets/cc37a8d2-5bcf-4990-8d1c-effd63928217" />
 
-### 🔐 Página de Inicio de sesión
-<img width="515" height="612" alt="image" src="https://github.com/user-attachments/assets/fef73cae-2014-4b80-a7eb-be00f993c6c0" />
+### Página de Login
+<img width="1918" height="928" alt="image" src="https://github.com/user-attachments/assets/307f418a-e144-4634-b15a-9271178f0c9b" />
 
-### 🗺️ Interfaz del inicio y listado
-<img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/fb401a40-2be1-456d-ad5f-dc5e587e2eb5" />
+### Página de Home - Logueado - Tabla
+<img width="1919" height="919" alt="image" src="https://github.com/user-attachments/assets/c571c0a9-ccff-43a3-8a8c-12ecbea23c7e" />
 
-### 🗺️ Creación del conductor
-<img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/00884388-f71d-4720-b4c6-c76fcd57734e" />
+### Página de Home - Logueado - Card
+<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/69e89e00-0d38-4ee8-816a-ea616f2b1b92" />
 
-### 🗺️ Mapa en tiempo Real
-<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/6856d60f-7ffa-459d-a9ef-1b16d4264745" />
+### Crear producto - Modal - Crear Step 1 
+<img width="1912" height="927" alt="image" src="https://github.com/user-attachments/assets/58181891-d578-4e1d-886a-ea056adbea77" />
 
-### 🗺️ Vista del conductor
-<img width="1916" height="886" alt="image" src="https://github.com/user-attachments/assets/8ff54ec8-cb04-42b5-86a9-5f3603a24d71" />
+### Crear producto - Modal - Crear Step 2
+<img width="1919" height="922" alt="image" src="https://github.com/user-attachments/assets/560481c9-b3a3-426a-a648-a0b6e7e072b3" />
 
+### Crear producto - Modal - Crear Step 3
+<img width="1919" height="913" alt="image" src="https://github.com/user-attachments/assets/1df0148b-e52b-4972-b640-4bff76660e1d" />
+
+### Página de Home - Logueado - Formulario
+<img width="1919" height="919" alt="image" src="https://github.com/user-attachments/assets/b0291cd8-f851-4bdd-a899-b3e34b14c6ae" />
+
+### Página de Home -  Formulario - Crear Step 1
+<img width="1907" height="932" alt="image" src="https://github.com/user-attachments/assets/16a2b828-dc37-4de6-aae4-e752058f63a3" />
+
+### Página de Home - Formulario - Editar Step 1
+<img width="1919" height="920" alt="image" src="https://github.com/user-attachments/assets/1b9069ce-5123-4584-b857-f13659581232" />
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
-
----
-
-## 👨‍💻 Autor
-
-Desarrollado por **@JoseFelicianospec**.
-No dudes en contribuir, proponer mejoras o abrir issues.
-
+Este proyecto está bajo la [Licencia MIT](LICENSE) y creado por Jose Feliciano.
