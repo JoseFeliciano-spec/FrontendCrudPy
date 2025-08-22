@@ -8,7 +8,6 @@ interface UserResponse {
     id: string;
     name: string;
     token: string;
-    vehicleId: string | null;
     email: string;
     createdAt: string;
     role?: string;
@@ -32,7 +31,7 @@ export async function getUser(): Promise<UserResponse> {
       };
     }
 
-    const response = await fetch(`${process.env.API_URL}/v1/user/me`, {
+    const response = await fetch(`${process.env.API_URL}/v1/auth/me`, {
       method: "GET",
       cache: "no-store",
       headers: {
@@ -57,11 +56,9 @@ export async function getUser(): Promise<UserResponse> {
       data: {
         id: data.data.id,
         name: data.data.name,
-        vehicleId: data.data.vehicleId,
         token: token?.value,
-        role: data?.data?.role,
         email: data.data.email,
-        createdAt: data.data.createdAt,
+        createdAt: data.data.created_at,
       },
     };
   } catch (error) {

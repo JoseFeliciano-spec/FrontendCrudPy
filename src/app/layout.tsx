@@ -18,11 +18,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "MapaApp | Proyecto realizado por Jose Feliciano",
-  description: "MapaApp creado con Next.js",
+  title: "RegistroMarca | Proyecto realizado por Jose Feliciano",
+  description: "RegistroMarca creado con Next.js",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal,
 }: Readonly<{

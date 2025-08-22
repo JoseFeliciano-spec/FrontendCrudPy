@@ -1,9 +1,9 @@
 "use client";
-
-import { Button } from "../ui/button";
-import revalidatePathLocal from "@/actions/revalidath";
 import { removeToken } from "@/actions/auth/getUser";
 import { LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { userStore } from "@/store/userStore";
+import revalidatePathLocal from "@/actions/revalidath";
 
 export default function ButtonLogout() {
   return (
@@ -13,6 +13,9 @@ export default function ButtonLogout() {
       onClick={async () => {
         await removeToken();
         await revalidatePathLocal();
+        userStore.setState({
+          user: { currentUser: undefined },
+        });
       }}
     >
       <LogOut className="h-4 w-4" />

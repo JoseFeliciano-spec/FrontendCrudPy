@@ -2,7 +2,7 @@
 import { cookies } from "next/headers";
 
 export async function login(body: any): Promise<any> {
-  const data: any = await fetch(`${process.env.API_URL}/v1/user/login`, {
+  const data: any = await fetch(`${process.env.API_URL}/v1/auth/login`, {
     method: "POST",
     cache: "no-store",
     headers: {
@@ -16,10 +16,10 @@ export async function login(body: any): Promise<any> {
   const dataJson = (await data.json()) as any;
 
   // Si el login es exitoso, guardamos el token
-  if (dataJson?.data?.access_token) {
+  if (dataJson?.access_token) {
     cookies().set({
       name: "auth-token",
-      value: dataJson?.data?.access_token,
+      value: dataJson?.access_token,
       httpOnly: true,
       sameSite: "strict",
       maxAge: 60 * 60 * 24, // 1 dia

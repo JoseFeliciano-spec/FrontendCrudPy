@@ -6,12 +6,10 @@ import * as yup from "yup";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Input } from "@/components/ui/input";
 import { userStore } from "@/store/userStore";
-
 import toast from "react-hot-toast";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { PasswordInput } from "@/components/ui/password";
-/* import { useToast } from "@/hooks/use-toast"; */
 import { useRouter } from "next/navigation";
 import { registerUser } from "@/actions/auth/register";
 import { login } from "@/actions/auth/login";
@@ -65,9 +63,6 @@ type FormAuthProps = {
 };
 
 export default function FormAuth({ type, id }: FormAuthProps) {
-  /*  const { toast } = useToast();
-  const router = useRouter();
-   */
   const router = useRouter();
   const { user } = userStore();
   const {
@@ -89,15 +84,14 @@ export default function FormAuth({ type, id }: FormAuthProps) {
         userStore.setState({
           user: { currentUser: response?.data },
         });
-        toast.success(response?.message);
+        toast.success("Inicio de sesión exitoso");
         if (id === "modal") {
           router.back();
           return;
         }
-
         router.push("/");
+        return;
       }
-
       toast.error("Ha ocurrido un error");
     } catch (error) {
       console.error(error);
@@ -113,11 +107,13 @@ export default function FormAuth({ type, id }: FormAuthProps) {
         password: data.password,
       });
 
-      if (response?.statusCode !== 202) {
-        toast.error(response?.errors as any);
+      if (response?.statusCode !== 200) {
+        toast.error("Existe un problema con el registro");
         return;
       }
-
+      userStore.setState({
+        user: { currentUser: response?.data },
+      });
       toast.success("Registro exitoso");
       router.push("/");
     } catch (error) {
@@ -145,90 +141,126 @@ export default function FormAuth({ type, id }: FormAuthProps) {
   }, [user?.currentUser]);
 
   return (
-    <>
-      <div className="mt-2" />
+    <div className="w-full space-y-5 pt-4">
+      {/* Nombre completo (solo registro) */}
       {type === "register" && (
-        <div className="container lg:w-[28rem] mt-4">
-          <div className="grid w-full md:w-sm items-center gap-2">
-            <Label htmlFor="name">Nombre completo</Label>
-            <Input
-              type="text"
-              {...register("name")}
-              id="name"
-              placeholder="Introduce tu nombre completo"
-              className="border-2"
-            />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
-            )}
-          </div>
-        </div>
-      )}
-      <div className="container lg:w-[28rem] my-3 md:my-4">
-        <div className="grid w-full md:w-sm items-center gap-2">
-          <Label htmlFor="email">Correo electrónico</Label>
+        <div className="space-y-2">
+          <Label
+            htmlFor="name"
+            className="text-sm font-semibold text-slate-700"
+          >
+            Nombre completo
+          </Label>
           <Input
-            type="email"
-            {...register("email")}
-            id="email"
-            placeholder="Introduce tu correo electrónico"
-            className="border-2"
+            type="text"
+            {...register("name")}
+            id="name"
+            placeholder="Introduce tu nombre completo"
+            className="border-2 border-slate-200 focus:border-purple-400 focus:ring-purple-400 transition-colors bg-slate-50 focus:bg-white"
           />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          {errors.name && (
+            <p className="text-red-500 text-sm flex items-center gap-1">
+              <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+              {errors.name.message}
+            </p>
           )}
-        </div>
-      </div>
-      <div className="container lg:w-[28rem]">
-        <div className="grid w-full md:w-sm items-center gap-2">
-          <Label htmlFor="password">Contraseña</Label>
-          <PasswordInput
-            {...register("password")}
-            id="password"
-            placeholder="Introduce tu contraseña"
-            className="border-2"
-          />
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
-          )}
-        </div>
-      </div>
-      {type === "register" && (
-        <div className="container lg:w-[28rem] mt-3 md:mt-4">
-          <div className="grid w-full md:w-sm items-center gap-2">
-            <Label htmlFor="passwordRepeat">Repetir contraseña</Label>
-            <PasswordInput
-              {...register("passwordRepeat")}
-              id="passwordRepeat"
-              placeholder="Introduce tu contraseña nuevamente"
-              className="border-2"
-            />
-            {errors.passwordRepeat && (
-              <p className="text-red-500 text-sm">
-                {errors.passwordRepeat.message}
-              </p>
-            )}
-          </div>
         </div>
       )}
-      <div className="container lg:w-[28rem]">
-        <p className="my-4 text-sm font-semibold text-left">
-          Recuperar contraseña
-        </p>
+
+      {/* Email */}
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-sm font-semibold text-slate-700">
+          Correo electrónico
+        </Label>
+        <Input
+          type="email"
+          {...register("email")}
+          id="email"
+          placeholder="Introduce tu correo electrónico"
+          className="border-2 border-slate-200 focus:border-blue-400 focus:ring-blue-400 transition-colors bg-slate-50 focus:bg-white"
+        />
+        {errors.email && (
+          <p className="text-red-500 text-sm flex items-center gap-1">
+            <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+            {errors.email.message}
+          </p>
+        )}
       </div>
 
-      <div className="container lg:w-[28rem] mb-3">
-        <Button className="w-full" onClick={handleSubmit(onHandleSubmit)}>
-          {!isSubmitting ? (
-            <>{type === "login" ? "Iniciar sesión" : "Registrar"}</>
-          ) : (
-            <>
-              <AiOutlineLoading3Quarters className="mr-2 h-4 w-4 animate-spin" />
-              Cargando...
-            </>
-          )}
-        </Button>
+      {/* Contraseña */}
+      <div className="space-y-2">
+        <Label
+          htmlFor="password"
+          className="text-sm font-semibold text-slate-700"
+        >
+          Contraseña
+        </Label>
+        <PasswordInput
+          {...register("password")}
+          id="password"
+          placeholder="Introduce tu contraseña"
+          className="border-2 border-slate-200 focus:border-cyan-400 focus:ring-cyan-400 transition-colors bg-slate-50 focus:bg-white"
+        />
+        {errors.password && (
+          <p className="text-red-500 text-sm flex items-center gap-1">
+            <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+            {errors.password.message}
+          </p>
+        )}
       </div>
-    </>
+
+      {/* Repetir contraseña (solo registro) */}
+      {type === "register" && (
+        <div className="space-y-2">
+          <Label
+            htmlFor="passwordRepeat"
+            className="text-sm font-semibold text-slate-700"
+          >
+            Repetir contraseña
+          </Label>
+          <PasswordInput
+            {...register("passwordRepeat")}
+            id="passwordRepeat"
+            placeholder="Introduce tu contraseña nuevamente"
+            className="border-2 border-slate-200 focus:border-pink-400 focus:ring-pink-400 transition-colors bg-slate-50 focus:bg-white"
+          />
+          {errors.passwordRepeat && (
+            <p className="text-red-500 text-sm flex items-center gap-1">
+              <span className="w-1 h-1 bg-red-500 rounded-full"></span>
+              {errors.passwordRepeat.message}
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* Link de recuperar contraseña */}
+      <div className="flex justify-end">
+        <button
+          type="button"
+          className="text-sm font-medium text-slate-600 hover:text-purple-600 transition-colors"
+        >
+          ¿Olvidaste tu contraseña?
+        </button>
+      </div>
+
+      {/* Botón de submit */}
+      <Button
+        className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02] disabled:transform-none disabled:opacity-70"
+        onClick={handleSubmit(onHandleSubmit)}
+        disabled={isSubmitting}
+      >
+        {!isSubmitting ? (
+          <span className="flex items-center gap-2">
+            <span>{type === "login" ? "Iniciar sesión" : "Crear cuenta"}</span>
+            <span className="text-lg">{type === "login" ? "🔑" : "🚀"}</span>
+          </span>
+        ) : (
+          <span className="flex items-center gap-2">
+            <AiOutlineLoading3Quarters className="h-4 w-4 animate-spin" />
+            <span>Procesando...</span>
+          </span>
+        )}
+      </Button>
+    </div>
   );
 }
