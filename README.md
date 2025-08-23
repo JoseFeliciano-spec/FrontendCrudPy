@@ -2,6 +2,8 @@
 
 **Aplicación de Gestión de Productos** es una aplicación web moderna para administrar un catálogo de productos, desarrollada con **Next.js**, **TypeScript** y un stack de tecnologías frontend modernas. Permite a los usuarios realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en productos a través de una interfaz segura, responsiva e intuitiva.
 
+- [**Frontend Crud Vercel**](https://frontend-crud-py.vercel.app/) – Link en producción de Vercel
+
 ---
 
 ## ✨ Características
