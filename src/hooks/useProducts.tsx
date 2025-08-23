@@ -28,7 +28,7 @@ export const useProducts = (token: string | null) => {
     isLoading,
     error,
   } = useQuery<any>({
-    queryKey: ["products", page, limit],
+    queryKey: ["products", page, limit, token],
     queryFn: async () => {
       const response = await axios.get(
         `/v1/products?skip=${page * limit}&limit=${limit}`,
